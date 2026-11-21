@@ -22,7 +22,7 @@ jobs:
           script: |
             set -e
             if [ ! -d "/home/ubuntu/docker-ci-cd" ]; then
-              git clone https://github.com /home/ubuntu/docker-ci-cd
+              git clone https://github.com/vhsoni07/docker_cicd.git /home/ubuntu/docker-ci-cd
             fi
             cd /home/ubuntu/docker-ci-cd
             git pull
