@@ -1,0 +1,17 @@
+{
+  "name": "docker_test",
+  "version": "1.0.0",
+  "description": "This is a docker test project of node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
