@@ -20,6 +20,10 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd ~
-            git clone vhsoni07/docker_cicd docker-ci-cd
-            docker-compose up -d --build
+            set -e
+            if [ ! -d "/home/ubuntu/docker-ci-cd" ]; then
+              git clone https://github.com /home/ubuntu/docker-ci-cd
+            fi
+            cd /home/ubuntu/docker-ci-cd
+            git pull
+            docker compose up -d --build
