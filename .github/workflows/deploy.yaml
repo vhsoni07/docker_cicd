@@ -1,0 +1,28 @@
+name: Testing ci/cd pipeline with an docker
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubntu-latest
+
+    steps:
+      -name: Checkout code
+       uses: actions/checkout@v4
+
+      -name: Deploy via SSH
+       uses: appleboy/ssh-action@v1.2.5
+       with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        script: |
+          cd /home/ubuntu/docker-ci-cd
+          git pull
+          docker-compose up -d --build
